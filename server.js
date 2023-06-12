@@ -6,6 +6,7 @@ const session = require('express-session');
 const flash = require('connect-flash');
 const passport = require('./config/ppConfig');
 const isLoggedIn = require('./middleware/isLoggedIn');
+const googleFitRoutes = require('./googleFit');
 
 // environment variables
 SECRET_SESSION = process.env.SECRET_SESSION;
@@ -16,6 +17,7 @@ app.use(require('morgan')('dev'));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(__dirname + '/public'));
 app.use(layouts);
+app.use(googleFitRoutes);
 
 app.use(flash());            // flash middleware
 
